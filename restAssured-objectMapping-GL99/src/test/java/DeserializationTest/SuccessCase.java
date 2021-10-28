@@ -1,9 +1,9 @@
-package DeserialisationTest;
+package DeserializationTest;
 
 public class SuccessCase {
     @Override
     public String toString() {
-        return "DeserialisationTest.SuccessCase{" +
+        return "DeserializationTest.SuccessCase{" +
                 "id='" + id + '\'' +
                 ", token='" + token + '\'' +
                 '}';
@@ -13,10 +13,6 @@ public class SuccessCase {
     private String token;
 
     public SuccessCase() {
-    }
-    public SuccessCase( String id, String token) {
-        this.id = id;
-        this.token = token;
     }
 
     public String getId() {

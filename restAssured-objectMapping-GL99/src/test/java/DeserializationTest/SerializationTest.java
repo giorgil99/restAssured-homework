@@ -1,10 +1,11 @@
-package DeserialisationTest;
+package DeserializationTest;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
 import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
 import static io.restassured.RestAssured.given;
@@ -12,13 +13,13 @@ import static io.restassured.RestAssured.given;
 public class SerializationTest {
 
     @Test
-    public void SuccessCall() {
+    public void successCall() {
         //        Implement SUCCESSFUL scenario with the following parameters
         Implementation impSuccess = new Implementation();
         RestAssured.baseURI = "https://reqres.in/api/register";
 
         Response response = given().contentType("application/json").body(impSuccess.
-                        RegisterUserWith2Keys("email", "eve.holt@reqres.in", "password", "pistol"))
+                        registerUserWith2Keys("email", "eve.holt@reqres.in", "password", "pistol"))
                 .post().then().extract().response();
 
         System.out.println(response.getStatusCode() + " " + response.getBody().jsonPath().get("id") +
@@ -31,12 +32,12 @@ public class SerializationTest {
 
 
     @Test
-    public void UnsuccessfulCall() {
+    public void unsuccessfulCall() {
         Implementation impFailure = new Implementation();
         RestAssured.baseURI = "https://reqres.in/api/register";
 
         Response response = given().contentType("application/json").body(impFailure.
-                        RegisterUserWith1Keys("email", "sydney@fife"))
+                        registerUserWith1Key("email", "sydney@fife"))
                 .post().then().extract().response();
         System.out.println(response.getStatusCode() + " " + response.getBody().jsonPath().get("error"));
 
@@ -50,17 +51,17 @@ public class SerializationTest {
 
     }
     @Test(priority = 1)
-    public void LastCall() {
+    public void lastCall() {
         Implementation impLast = new Implementation();
         RestAssured.baseURI = "https://reqres.in/api/users";
         Response response = given().contentType("application/json")
-                .body(impLast.RegisterUserWith2Keys("name","morpheus","job","leader"))
+                .body(impLast.registerUserWith2Keys("name","morpheus","job","leader"))
                 .post().then().extract().response();
 
         if (response.getStatusCode() ==201){
             LastCase lCase = response.getBody().as(LastCase.class);
             System.out.println(lCase.toString());
-            System.out.println(lCase.getCreatedAt().toLocalDateTime().atZone(ZoneId.systemDefault())
+            System.out.println("DateTime in local format: " +lCase.getCreatedAt().toLocalDateTime().atZone(ZoneId.systemDefault())
                     .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
         }
 

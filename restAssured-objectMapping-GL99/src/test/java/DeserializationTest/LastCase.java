@@ -1,8 +1,6 @@
-package DeserialisationTest;
+package DeserializationTest;
 
-import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 
 public class LastCase {
 
@@ -13,7 +11,7 @@ public class LastCase {
 
     @Override
     public String toString() {
-        return "LastCase{" +
+        return "DeserializationTest.LastCase{" +
                 "name='" + name + '\'' +
                 ", job='" + job + '\'' +
                 ", id='" + id + '\'' +
@@ -22,13 +20,6 @@ public class LastCase {
     }
 
     public LastCase() {
-    }
-
-    public LastCase(String name, String job, String id, String createdAt) {
-        this.name = name;
-        this.job = job;
-        this.id = id;
-        dateConverter(createdAt);
     }
 
     public String getName() {
