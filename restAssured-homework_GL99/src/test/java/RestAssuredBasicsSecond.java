@@ -54,7 +54,7 @@ public class RestAssuredBasicsSecond {
 
         given()
                 .contentType(ContentType.JSON)
-                .body(requestBody).post("/update/data").then().statusCode(201).log().body();
+                .body(requestBody).post().then().statusCode(201).log().body();
     }
 }
 
