@@ -1,4 +1,4 @@
-package DeserialisationTest;
+package DeserializationTest;
 
 public class UnsuccessfulCase {
 
@@ -6,7 +6,7 @@ public class UnsuccessfulCase {
 
     @Override
     public String toString() {
-        return "DeserialisationTest.UnsuccessfulCase{" +
+        return "DeserializationTest.UnsuccessfulCase{" +
                 "error='" + error + '\'' +
                 '}';
     }
@@ -14,9 +14,6 @@ public class UnsuccessfulCase {
     public UnsuccessfulCase() {
     }
 
-    public UnsuccessfulCase(String error) {
-        this.error = error;
-    }
 
     public String getError() {
         return error;
