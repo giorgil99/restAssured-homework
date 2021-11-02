@@ -1,5 +1,6 @@
 package Steps;
 
+import Models.DateDeserializer;
 import Models.JsonMapper;
 import Models.LastCase;
 import io.qameta.allure.Step;
@@ -7,6 +8,7 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.testng.asserts.SoftAssert;
 
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
@@ -62,12 +64,11 @@ public class LastCaseSteps {
     }
 
     @Step("Assert last call response createdAt ")
-    public LastCaseSteps assertDate(ZonedDateTime date) {
+    public LastCaseSteps assertDate(LocalDateTime date) {
         if (response.getStatusCode() == 201) {
-            LastCase lCase = response.getBody().as(LastCase.class);
+            DateDeserializer lCase = response.getBody().as(DateDeserializer.class);
             SoftAssert softAssert = new SoftAssert();
-            softAssert.assertEquals(lCase.getCreatedAt().toLocalDateTime()
-                    .atZone(ZoneId.systemDefault()).truncatedTo(ChronoUnit.MINUTES), date);
+            softAssert.assertEquals(lCase.getCreatedAt().truncatedTo(ChronoUnit.MINUTES), date);
             softAssert.assertAll();
         }
         return this;
