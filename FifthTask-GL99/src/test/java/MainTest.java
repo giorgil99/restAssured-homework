@@ -3,6 +3,7 @@ import Steps.SuccessCaseSteps;
 import Steps.UnSuccessFulCaseSteps;
 import org.testng.annotations.Test;
 
+import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 
@@ -33,7 +34,7 @@ public class MainTest {
                 .assertName("morpheus")
                 .assertJob("leader")
                 .assertId()
-                .assertDate(ZonedDateTime.now().truncatedTo(ChronoUnit.MINUTES).minusHours(4));
+                .assertDate(LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES).minusHours(4));
 
     }
 
