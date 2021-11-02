@@ -2,7 +2,7 @@ package Models;
 
 public class UnsuccessfulCase {
 
-    private  String error;
+    private String error;
 
     @Override
     public String toString() {

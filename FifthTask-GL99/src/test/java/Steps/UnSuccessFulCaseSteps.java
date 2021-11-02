@@ -20,22 +20,22 @@ public class UnSuccessFulCaseSteps {
         RestAssured.baseURI = "https://reqres.in/api/register";
         JsonMapper impFailure = new JsonMapper();
 
-       this.response = given().contentType("application/json").body(impFailure.
+        this.response = given().contentType("application/json").body(impFailure.
                         registerUserWith1Key("email", "sydney@fife"))
                 .post().then().extract().response();
 
-        return  this;
-        }
+        return this;
+    }
 
 
-        @Step("Assert unsuccessful call  error message ")
-    public  UnSuccessFulCaseSteps assertErrorMessage(String error){
+    @Step("Assert unsuccessful call  error message ")
+    public UnSuccessFulCaseSteps assertErrorMessage(String error) {
         if (response.statusCode() == 400) {
             Models.UnsuccessfulCase fCase = response.getBody().as(UnsuccessfulCase.class);
             SoftAssert softAssert = new SoftAssert();
             softAssert.assertEquals(fCase.getError(), error);
             softAssert.assertAll();
         }
-            return this;
-        }
+        return this;
+    }
 }

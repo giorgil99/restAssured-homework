@@ -27,7 +27,7 @@ public class SuccessCaseSteps {
 
 
     @Step("Assert successful id response ")
-    public SuccessCaseSteps successAssertId(String id ) {
+    public SuccessCaseSteps successAssertId(String id) {
         successCall();
         if (response.statusCode() == 200) {
             Models.SuccessCase sCase = response.getBody().as(SuccessCase.class);
