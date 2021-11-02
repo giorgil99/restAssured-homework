@@ -4,10 +4,10 @@ import java.time.ZonedDateTime;
 
 public class LastCase {
 
-   private String name ;
-   private String job ;
-   private String id ;
-   private ZonedDateTime createdAt;
+    private String name;
+    private String job;
+    private String id;
+    private ZonedDateTime createdAt;
 
     @Override
     public String toString() {
@@ -55,7 +55,7 @@ public class LastCase {
     }
 
 
-    private  void dateConverter(String date) {
+    private void dateConverter(String date) {
         this.createdAt = ZonedDateTime.parse(date);
 
     }
